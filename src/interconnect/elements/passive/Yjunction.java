@@ -5,16 +5,16 @@ import java.util.Map;
 
 import ch.epfl.general_libraries.clazzes.ParamName;
 import ch.epfl.general_libraries.utils.SimpleMap;
+import interconnect.elements.AbstractElement;
+import interconnect.util.Wavelength;
 import mathLib.numbers.Complex;
 import mathLib.sfg.numeric.SFG;
-import photonics.interconnect.elements.AbstractElement;
-import photonics.util.Wavelength;
 
 public class Yjunction extends AbstractElement {
 
 	Wavelength inputLambda = null ;
 	public double delta ;
-	
+
 	public Complex s11, s12, s13 ;
 	public Complex s21, s22, s23 ;
 	public Complex s31, s32, s33 ;
@@ -26,7 +26,7 @@ public class Yjunction extends AbstractElement {
 		this.name = name ;
 		this.delta = delta ;
 	}
-	
+
 	public void setName(String name) {
 		this.name = name ;
 	}
@@ -38,10 +38,10 @@ public class Yjunction extends AbstractElement {
 
 	@Override
 	public void buildElement() {
-		
+
 		if(inputLambda == null)
 			throw new NullPointerException("wavelength is not set for " + name) ;
-		
+
 		s12 = s21 = Math.sqrt((1+delta)/2.0) ;
 		s13 = s31 = Math.sqrt((1-delta)/2.0) ;
 
@@ -61,7 +61,7 @@ public class Yjunction extends AbstractElement {
 		nodes.add(port3_out) ;
 
 		sfgElement = new SFG(nodes) ;
-		
+
 		sfgElement.addArrow(port1_in, port1_out, s11);
 		sfgElement.addArrow(port1_in, port2_out, s21);
 		sfgElement.addArrow(port1_in, port3_out, s31);

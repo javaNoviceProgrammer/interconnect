@@ -4,12 +4,12 @@ import static java.lang.Math.PI;
 import static mathLib.numbers.Complex.j;
 import static mathLib.numbers.ComplexMath.exp;
 
+import interconnect.elements.passive.Yjunction;
+import interconnect.solver.PhotonicCircuit;
+import interconnect.util.Wavelength;
 import mathLib.numbers.Complex;
 import mathLib.plot.MatlabChart;
 import mathLib.util.MathUtils;
-import photonics.interconnect.elements.passive.Yjunction;
-import photonics.interconnect.solver.PhotonicCircuit;
-import photonics.util.Wavelength;
 
 public class Tutorial06 {
 

@@ -1,19 +1,20 @@
 package interconnect.elements.passive;
 
+import static mathLib.numbers.Complex.j;
+import static mathLib.numbers.ComplexMath.PI;
+import static mathLib.numbers.ComplexMath.exp;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
 import ch.epfl.general_libraries.clazzes.ParamName;
+import interconnect.elements.AbstractElement;
+import interconnect.modes.Neff;
+import interconnect.util.Wavelength;
 import mathLib.func.intf.RealFunction;
 import mathLib.numbers.Complex;
 import mathLib.sfg.numeric.SFG;
-import photonics.interconnect.elements.AbstractElement;
-import photonics.interconnect.modes.Neff;
-import photonics.util.Wavelength;
-
-import static mathLib.numbers.Complex.* ;
-import static mathLib.numbers.ComplexMath.*;
 
 public class StraightWg extends AbstractElement {
 
@@ -21,7 +22,7 @@ public class StraightWg extends AbstractElement {
 
 	double lengthMicron, alphaDbPerCm ;
 	RealFunction neff ;
-	
+
 	public Complex s11, s12, s21, s22 ;
 
 	public StraightWg(
@@ -35,7 +36,7 @@ public class StraightWg extends AbstractElement {
 		this.alphaDbPerCm = alphaDbPerCm ;
 		this.lengthMicron = lengthMicron ;
 	}
-	
+
 	public StraightWg(
 			@ParamName(name="Element Name") String name,
 			double neff,

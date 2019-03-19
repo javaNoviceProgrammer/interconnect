@@ -2,14 +2,14 @@ package interconnect.tutorial;
 
 import static java.lang.Math.PI;
 
+import interconnect.elements.passive.CompactCoupler;
+import interconnect.elements.passive.StraightWg;
+import interconnect.modes.Neff450X220Strip;
+import interconnect.solver.PhotonicCircuit;
+import interconnect.util.Wavelength;
 import mathLib.numbers.Complex;
 import mathLib.plot.MatlabChart;
 import mathLib.util.MathUtils;
-import photonics.interconnect.elements.passive.CompactCoupler;
-import photonics.interconnect.elements.passive.StraightWg;
-import photonics.interconnect.modes.Neff450X220Strip;
-import photonics.interconnect.solver.PhotonicCircuit;
-import photonics.util.Wavelength;
 
 public class Tutorial03 {
 

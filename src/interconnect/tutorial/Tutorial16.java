@@ -2,21 +2,21 @@ package interconnect.tutorial;
 
 import static java.lang.Math.PI;
 
+import interconnect.elements.active.BasicPhaseShifter;
+import interconnect.elements.passive.Yjunction;
+import interconnect.solver.PhotonicCircuit;
+import interconnect.util.Utils;
+import interconnect.util.Wavelength;
 import mathLib.plot.MatlabChart;
 import mathLib.util.MathUtils;
-import photonics.interconnect.elements.active.BasicPhaseShifter;
-import photonics.interconnect.elements.passive.Yjunction;
-import photonics.interconnect.solver.PhotonicCircuit;
-import photonics.interconnect.util.Utils;
-import photonics.util.Wavelength;
 
 public class Tutorial16 {
-	
+
 	public static void main(String[] args) {
-		double excessLossdB = 5 ; // dB 
+		double excessLossdB = 5 ; // dB
 		double lambdaNm = 1550 ;
 		double[] phaseShift = MathUtils.linspace(0, 2*PI, 10000) ;
-		double[] transfer = new double[phaseShift.length] ; 
+		double[] transfer = new double[phaseShift.length] ;
 		for(int i=0; i<phaseShift.length; i++) {
 			Wavelength lambda = new Wavelength(lambdaNm) ;
 			PhotonicCircuit pc = new PhotonicCircuit() ;

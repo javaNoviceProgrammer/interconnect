@@ -5,17 +5,17 @@ import java.util.HashMap;
 import java.util.Map;
 
 import ch.epfl.general_libraries.clazzes.ParamName;
+import interconnect.elements.AbstractElement;
+import interconnect.util.Wavelength;
 import mathLib.numbers.Complex;
 import mathLib.sfg.numeric.SFG;
-import photonics.interconnect.elements.AbstractElement;
-import photonics.util.Wavelength;
 
 public class Reflector extends AbstractElement {
 
 	Wavelength lambda = null ;
 
 	public double r, t ;
-	
+
 	public Complex s11, s12, s21, s22 ;
 
 	public Reflector(
@@ -74,5 +74,5 @@ public class Reflector extends AbstractElement {
 		return map ;
 	}
 
-	
+
 }

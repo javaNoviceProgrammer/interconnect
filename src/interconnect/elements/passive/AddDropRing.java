@@ -3,18 +3,18 @@ package interconnect.elements.passive;
 import static mathLib.numbers.Complex.j;
 import static mathLib.numbers.ComplexMath.PI;
 import static mathLib.numbers.ComplexMath.exp;
+import static mathLib.numbers.ComplexMath.sqrt;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
 import ch.epfl.general_libraries.clazzes.ParamName;
+import interconnect.elements.AbstractElement;
+import interconnect.util.Wavelength;
 import mathLib.func.intf.RealFunction;
 import mathLib.numbers.Complex;
 import mathLib.sfg.numeric.SFG;
-import photonics.interconnect.elements.AbstractElement;
-import photonics.util.Wavelength;
-import static mathLib.numbers.ComplexMath.*;
 
 public class AddDropRing extends AbstractElement {
 
@@ -22,12 +22,12 @@ public class AddDropRing extends AbstractElement {
 
 	double radiusMicron, kappa1, t1, kappa2, t2, alphaDbPerCm ;
 	RealFunction neff ;
-	
-	public Complex s11, s12, s13, s14 ; 
+
+	public Complex s11, s12, s13, s14 ;
 	public Complex s21, s22, s23, s24 ;
 	public Complex s31, s32, s33, s34 ;
 	public Complex s41, s42, s43, s44 ;
-	
+
 	public AddDropRing(
 			@ParamName(name="Element Name") String name ,
 			@ParamName(name="Waveguide Mode") RealFunction neff ,
@@ -45,20 +45,20 @@ public class AddDropRing extends AbstractElement {
 		this.t2 = Math.sqrt(1-kappa2*kappa2) ;
 		this.alphaDbPerCm = alphaDbPerCm ;
 	}
-	
+
 	@Override
 	public void buildElement() {
-		
+
 		if(lambda == null)
 			throw new NullPointerException("wavelength is not set for " + name) ;
-		
-		Complex a = exp(-PI*alphaDbPerCm*23*radiusMicron*1e-6) ; 
+
+		Complex a = exp(-PI*alphaDbPerCm*23*radiusMicron*1e-6) ;
 		Complex phi = 2*PI/lambda.getWavelengthMeter() * neff.evaluate(lambda.getWavelengthNm())*2*PI*radiusMicron*1e-6 ;
 		s21 = (t1 - a*t2*exp(-j*phi))/(1-t1*a*t2*exp(-j*phi)) ;
 		s12 = s34 = s43 = s21 ;
 		s41 = (-kappa1*kappa2*sqrt(a)*exp(-j*phi/2.0))/(1-t1*a*t2*exp(-j*phi)) ;
 		s14 = s23 = s34 = s41 ;
-		
+
 		nodes = new ArrayList<>() ;
 		String port1_in = name+".port1.in" ;
 		String port1_out = name+".port1.out" ;
@@ -78,7 +78,7 @@ public class AddDropRing extends AbstractElement {
 		nodes.add(port4_out) ;
 
 		sfgElement = new SFG(nodes) ;
-		
+
 		sfgElement.addArrow(port1_in, port1_out, s11);
 		sfgElement.addArrow(port1_in, port2_out, s21);
 		sfgElement.addArrow(port1_in, port3_out, s31);
@@ -98,7 +98,7 @@ public class AddDropRing extends AbstractElement {
 		sfgElement.addArrow(port4_in, port2_out, s24);
 		sfgElement.addArrow(port4_in, port3_out, s34);
 		sfgElement.addArrow(port4_in, port4_out, s44);
-		
+
 	}
 
 	@Override

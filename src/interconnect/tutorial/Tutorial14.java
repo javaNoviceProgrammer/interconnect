@@ -1,24 +1,24 @@
 package interconnect.tutorial;
 
+import interconnect.elements.passive.DirectionalCoupler;
+import interconnect.elements.passive.StraightWg;
+import interconnect.modes.Neff450X220CoupledStrip;
+import interconnect.modes.Neff450X220Strip;
+import interconnect.solver.PhotonicCircuit;
+import interconnect.util.Utils;
+import interconnect.util.Wavelength;
 import mathLib.plot.MatlabChart;
 import mathLib.util.MathUtils;
-import photonics.interconnect.elements.passive.DirectionalCoupler;
-import photonics.interconnect.elements.passive.StraightWg;
-import photonics.interconnect.modes.Neff450X220CoupledStrip;
-import photonics.interconnect.modes.Neff450X220Strip;
-import photonics.interconnect.solver.PhotonicCircuit;
-import photonics.interconnect.util.Utils;
-import photonics.util.Wavelength;
 
 public class Tutorial14 {
-	
+
 	public static void main(String[] args) {
 		double L = 36.8 ; // um
 		double Lwg = 40 ; // um
 		double gap = 200e-3 ; // um
 		double loss = 0 ; // dB per cm
 		double[] lambdaNm = MathUtils.linspace(1500, 1600, 1000) ;
-		double[] reflection = new double[lambdaNm.length] ; 
+		double[] reflection = new double[lambdaNm.length] ;
 		for(int i=0; i<lambdaNm.length; i++) {
 			Wavelength lambda = new Wavelength(lambdaNm[i]) ;
 			PhotonicCircuit pc = new PhotonicCircuit() ;

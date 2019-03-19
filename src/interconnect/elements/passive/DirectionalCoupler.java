@@ -1,17 +1,21 @@
 package interconnect.elements.passive;
 
-import static mathLib.numbers.Complex.*;
-import static mathLib.numbers.ComplexMath.*;
+import static mathLib.numbers.Complex.j;
+import static mathLib.numbers.ComplexMath.PI;
+import static mathLib.numbers.ComplexMath.cos;
+import static mathLib.numbers.ComplexMath.exp;
+import static mathLib.numbers.ComplexMath.sin;
+
 import java.util.ArrayList;
 import java.util.Map;
 
 import ch.epfl.general_libraries.clazzes.ParamName;
 import ch.epfl.general_libraries.utils.SimpleMap;
+import interconnect.elements.AbstractElement;
+import interconnect.modes.NeffCoupled;
+import interconnect.util.Wavelength;
 import mathLib.numbers.Complex;
 import mathLib.sfg.numeric.SFG;
-import photonics.interconnect.elements.AbstractElement;
-import photonics.interconnect.modes.NeffCoupled;
-import photonics.util.Wavelength;
 
 public class DirectionalCoupler extends AbstractElement {
 
@@ -20,7 +24,7 @@ public class DirectionalCoupler extends AbstractElement {
 	private double gapNm ;
 	NeffCoupled neffCoupled ;
 	Complex t, kappa ;
-	
+
 	public Complex s11, s12, s13, s14 ;
 	public Complex s21, s22, s23, s24 ;
 	public Complex s31, s32, s33, s34 ;
@@ -40,7 +44,7 @@ public class DirectionalCoupler extends AbstractElement {
 		this.gapNm = gap*1e3 ;
 		this.alphaDbPerCm = alphaDbPerCm ;
 	}
-	
+
 	public void setName(String name) {
 		this.name = name ;
 	}
@@ -53,10 +57,10 @@ public class DirectionalCoupler extends AbstractElement {
 
 	@Override
 	public void buildElement() {
-		
+
 		if(inputLambda == null)
 			throw new NullPointerException("wavelength is not set for " + name) ;
-		
+
 		double lambdaNm = inputLambda.getWavelengthNm() ;
 		double nEven = neffCoupled.getNeffEven(lambdaNm, gapNm) ;
 		double nOdd = neffCoupled.getNeffOdd(lambdaNm, gapNm) ;
@@ -64,7 +68,7 @@ public class DirectionalCoupler extends AbstractElement {
 		Complex betaMinus = 2*PI/(lambdaNm*1e-9)*(nEven-nOdd)/2.0 ;
 		t = exp(-j*betaPlus*length*1e-6)*cos(betaMinus*length*1e-6) ;
 		kappa = exp(-j*betaPlus*length*1e-6)*sin(betaMinus*length*1e-6) ;
-		
+
 		s21 = s12 = s34 = s43 = t ;
 		s31 = s13 = s24 = s42 = -j*kappa ;
 
@@ -76,7 +80,7 @@ public class DirectionalCoupler extends AbstractElement {
 		String port3_out = name+".port3.out" ;
 		String port4_in = name+".port4.in" ;
 		String port4_out = name+".port4.out" ;
-		
+
 		nodes = new ArrayList<>() ;
 		nodes.add(port1_in) ;
 		nodes.add(port1_out) ;
@@ -86,7 +90,7 @@ public class DirectionalCoupler extends AbstractElement {
 		nodes.add(port3_out) ;
 		nodes.add(port4_in) ;
 		nodes.add(port4_out) ;
-		
+
 		sfgElement = new SFG(nodes) ;
 
 		sfgElement.addArrow(port1_in, port1_out, s11);

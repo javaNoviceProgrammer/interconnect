@@ -3,8 +3,8 @@ package interconnect.elements;
 import java.util.ArrayList;
 import java.util.Map;
 
+import interconnect.util.Wavelength;
 import mathLib.sfg.numeric.SFG;
-import photonics.util.Wavelength;
 
 public abstract class AbstractElement {
 

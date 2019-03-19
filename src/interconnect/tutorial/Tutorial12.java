@@ -1,11 +1,11 @@
 package interconnect.tutorial;
 
+import interconnect.elements.passive.DirectionalCoupler;
+import interconnect.modes.Neff450X220CoupledStrip;
+import interconnect.solver.PhotonicCircuit;
+import interconnect.util.Wavelength;
 import mathLib.plot.MatlabChart;
 import mathLib.util.MathUtils;
-import photonics.interconnect.elements.passive.DirectionalCoupler;
-import photonics.interconnect.modes.Neff450X220CoupledStrip;
-import photonics.interconnect.solver.PhotonicCircuit;
-import photonics.util.Wavelength;
 
 public class Tutorial12 {
 	

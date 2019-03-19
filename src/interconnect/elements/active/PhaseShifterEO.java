@@ -2,12 +2,13 @@ package interconnect.elements.active;
 
 import java.util.ArrayList;
 import java.util.Map;
+
 import ch.epfl.general_libraries.clazzes.ParamName;
 import ch.epfl.general_libraries.utils.SimpleMap;
+import interconnect.elements.AbstractElement;
+import interconnect.util.PlasmaDispersionModel;
+import interconnect.util.Wavelength;
 import mathLib.sfg.numeric.SFG;
-import photonics.interconnect.elements.AbstractElement;
-import photonics.pnjunc.PlasmaDispersionModel;
-import photonics.util.Wavelength;
 
 public class PhaseShifterEO extends AbstractElement  {
 

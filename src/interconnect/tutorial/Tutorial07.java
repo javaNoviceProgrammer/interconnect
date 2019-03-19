@@ -1,13 +1,13 @@
 package interconnect.tutorial;
 
+import interconnect.elements.passive.StraightWg;
+import interconnect.elements.passive.Yjunction;
+import interconnect.modes.Neff450X220Strip;
+import interconnect.solver.PhotonicCircuit;
+import interconnect.util.Utils;
+import interconnect.util.Wavelength;
 import mathLib.plot.MatlabChart;
 import mathLib.util.MathUtils;
-import photonics.interconnect.elements.passive.StraightWg;
-import photonics.interconnect.elements.passive.Yjunction;
-import photonics.interconnect.modes.Neff450X220Strip;
-import photonics.interconnect.solver.PhotonicCircuit;
-import photonics.interconnect.util.Utils;
-import photonics.util.Wavelength;
 
 public class Tutorial07 {
 
@@ -40,7 +40,7 @@ public class Tutorial07 {
 			pc.connectPorts("y2.port3", "wg2.port2");
 			transfer[i] = Utils.todB(pc.getTransfer("y1.port1", "y2.port1").absSquared()) ;
 			deltaL[i] = L2[i]-L1 ;
-			
+
 			if(i==0)
 				pc.printDetails();
 		}

@@ -7,16 +7,16 @@ import java.util.Map;
 
 import ch.epfl.general_libraries.clazzes.ParamName;
 import ch.epfl.general_libraries.utils.SimpleMap;
+import interconnect.elements.AbstractElement;
+import interconnect.util.Wavelength;
 import mathLib.numbers.Complex;
 import mathLib.sfg.numeric.SFG;
-import photonics.interconnect.elements.AbstractElement;
-import photonics.util.Wavelength;
 
 public class CompactCouplerUnidirectional extends AbstractElement {
 
 	Wavelength inputLambda = null ;
 	public double kappa, t ;
-	
+
 	public Complex s11, s12, s13, s14 ;
 	public Complex s21, s22, s23, s24 ;
 	public Complex s31, s32, s33, s34 ;
@@ -30,7 +30,7 @@ public class CompactCouplerUnidirectional extends AbstractElement {
 		this.kappa = kappa ;
 		this.t = Math.sqrt(1-kappa*kappa) ;
 	}
-	
+
 	public void setName(String name) {
 		this.name = name ;
 	}
@@ -54,9 +54,9 @@ public class CompactCouplerUnidirectional extends AbstractElement {
 		nodes.add(port2_out) ;
 		nodes.add(port3_out) ;
 		nodes.add(port4_in) ;
-		
+
 		sfgElement = new SFG(nodes) ;
-		
+
 		s21 = s12 = s34 = s43 = t ;
 		s31 = s13 = s24 = s42 = -j*kappa ;
 
