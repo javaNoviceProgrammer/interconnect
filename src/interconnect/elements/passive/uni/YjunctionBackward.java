@@ -8,7 +8,7 @@ import ch.epfl.general_libraries.utils.SimpleMap;
 import interconnect.elements.AbstractElement;
 import interconnect.util.Wavelength;
 import mathLib.numbers.Complex;
-import mathLib.sfg.numeric.SFG;
+import mathLib.sfg.SFG;
 
 public class YjunctionBackward extends AbstractElement {
 

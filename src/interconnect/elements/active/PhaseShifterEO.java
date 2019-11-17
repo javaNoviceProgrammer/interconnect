@@ -8,7 +8,7 @@ import ch.epfl.general_libraries.utils.SimpleMap;
 import interconnect.elements.AbstractElement;
 import interconnect.util.PlasmaDispersionModel;
 import interconnect.util.Wavelength;
-import mathLib.sfg.numeric.SFG;
+import mathLib.sfg.SFG;
 
 public class PhaseShifterEO extends AbstractElement  {
 

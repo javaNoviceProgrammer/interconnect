@@ -11,7 +11,7 @@ import ch.epfl.general_libraries.results.DataPoint;
 import ch.epfl.javancox.experiments.builder.ExperimentConfigurationCockpit;
 import interconnect.elements.AbstractElement;
 import interconnect.util.Wavelength;
-import mathLib.sfg.numeric.SFG;
+import mathLib.sfg.SFG;
 import mathLib.util.MathUtils;
 
 public class Interconnect implements Experiment {

@@ -8,7 +8,7 @@ import flanagan.io.FileOutput;
 import interconnect.elements.AbstractElement;
 import interconnect.util.Wavelength;
 import mathLib.numbers.Complex;
-import mathLib.sfg.numeric.SFG;
+import mathLib.sfg.SFG;
 import mathLib.util.CustomJFileChooser;
 
 public class PhotonicCircuit {

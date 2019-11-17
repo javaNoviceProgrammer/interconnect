@@ -15,7 +15,7 @@ import interconnect.elements.AbstractElement;
 import interconnect.modes.NeffCoupled;
 import interconnect.util.Wavelength;
 import mathLib.numbers.Complex;
-import mathLib.sfg.numeric.SFG;
+import mathLib.sfg.SFG;
 
 public class DirectionalCoupler extends AbstractElement {
 

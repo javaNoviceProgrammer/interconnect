@@ -13,7 +13,7 @@ import interconnect.elements.AbstractElement;
 import interconnect.util.Wavelength;
 import mathLib.func.intf.RealFunction;
 import mathLib.numbers.Complex;
-import mathLib.sfg.numeric.SFG;
+import mathLib.sfg.SFG;
 
 public class AllPassRing extends AbstractElement {
 

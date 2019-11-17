@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.Map;
 
 import interconnect.util.Wavelength;
-import mathLib.sfg.numeric.SFG;
+import mathLib.sfg.SFG;
 
 public abstract class AbstractElement {
 
